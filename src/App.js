@@ -15,15 +15,14 @@ function App() {
         {id: 2, title: 'Vue'},
         {id: 3, title: 'Angular'}
     ]
+    const listItems = books.map(book => <li key={book.id}>{book.title}</li>)
     return (
         <div className="App">
             {isReact && <Hello name="React"/>}
             {!isReact && <Hello name="Vue"/>}
             <p>1 + 2 = {add(1, 2)}</p>
             <ul>
-                {books.map(book => (
-                    <li key={book.id}>{book.title}</li>
-                ))}
+                {listItems}
             </ul>
         </div>
     );
