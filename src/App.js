@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, createContext} from "react";
+import React, {useState, useEffect, useContext, createContext, useRef} from "react";
 
 const LIMIT = 10;
 
@@ -57,12 +57,24 @@ function App() {
         document.getElementById('effectHook').innerText = `You clicked ${count} times`
     }, [])
 
+    useEffect(() => {
+        prevCountRef.current = count
+    })
+
     const [visible, setVisible] = useState(true);
 
     const value = {
         name: 'soarflat',
         handleClick: () => setCount(count => count + 1)
     }
+
+    const inputEl = useRef(null);
+    const onButtonClick = () => {
+        if (!inputEl.current) return;
+        inputEl.current.focus();
+    }
+    const prevCountRef = useRef(0);
+
 
     return (
         <div className="App">
@@ -83,6 +95,14 @@ function App() {
             <MyContext.Provider value={value}>
                 <ChildComponent />
             </MyContext.Provider>
+
+            <input ref={inputEl} type="text" />
+            <br />
+            <button onClick={onButtonClick}>input要素をフォーカスする</button>
+
+            <p>
+                count: {count}, before: {prevCountRef.current}
+            </p>
         </div>
     );
 }
