@@ -9,9 +9,11 @@ const Hello = (props) => {
 }
 
 function App() {
+    const isReact = false;
     return (
         <div className="App">
-            <Hello name="React"/>
+            {isReact && <Hello name="React" />}
+            {!isReact && <Hello name="Vue" />}
             <p>1 + 2 = {add(1, 2)}</p>
         </div>
     );
