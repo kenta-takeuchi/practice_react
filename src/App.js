@@ -1,6 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext, createContext} from "react";
 
 const LIMIT = 10;
+
+const MyContext = createContext();
 
 const Timer = () => {
     const [timeLeft, setTimeLeft] = useState(LIMIT);
@@ -57,6 +59,11 @@ function App() {
 
     const [visible, setVisible] = useState(true);
 
+    const value = {
+        name: 'soarflat',
+        handleClick: () => setCount(count => count + 1)
+    }
+
     return (
         <div className="App">
             {isReact && <Hello name="React"/>}
@@ -72,8 +79,27 @@ function App() {
             <p id="effectHook"></p>
             <button onClick={() => setVisible(!visible)}>toggle Timer</button>
             {visible ? <Timer /> : ""}
+
+            <MyContext.Provider value={value}>
+                <ChildComponent />
+            </MyContext.Provider>
         </div>
     );
+}
+
+const ChildComponent = () => {
+    return <GrandChildComponent />
+}
+
+const GrandChildComponent = () => {
+    const context = useContext(MyContext);
+
+    return (
+        <>
+            <p>{context.name}</p>
+            <button onClick={context.handleClick}>increment</button>
+        </>
+    )
 }
 
 export default App;
