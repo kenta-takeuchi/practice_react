@@ -1,14 +1,9 @@
 {
   "todos": [
     {
-      "title": "Angular の学習",
-      "id": "c7051c2c-9f9e-452b-999f-1ce412415545",
-      "completed": false
-    },
-    {
       "title": "Vue.js の学習",
       "id": "82ebaa6d-95b9-4771-ac51-6570ab7bd1ac",
-      "completed": false
+      "completed": true
     },
     {
       "title": "React の学習",
