@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 function add(a, b) {
     return a + b;
@@ -21,6 +21,8 @@ function App() {
         console.log(`Hello, ${message}`);
     }
 
+    const [count, setCount] = useState(0);
+
     return (
         <div className="App">
             {isReact && <Hello name="React"/>}
@@ -30,6 +32,9 @@ function App() {
                 {listItems}
             </ul>
             <button onClick={() => handleClick('React')}>click</button>
+
+            <p>Count: {count}</p>
+            <button onClick={() => setCount(count + 1)}>add Count</button>
         </div>
     );
 }
