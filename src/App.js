@@ -16,6 +16,11 @@ function App() {
         {id: 3, title: 'Angular'}
     ]
     const listItems = books.map(book => <li key={book.id}>{book.title}</li>)
+
+    const handleClick = message => {
+        console.log(`Hello, ${message}`);
+    }
+
     return (
         <div className="App">
             {isReact && <Hello name="React"/>}
@@ -24,6 +29,7 @@ function App() {
             <ul>
                 {listItems}
             </ul>
+            <button onClick={() => handleClick('React')}>click</button>
         </div>
     );
 }
