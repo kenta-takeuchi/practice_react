@@ -6,7 +6,6 @@ const TodoList = ({todos, toggleTodo, deleteTodo}) => {
         return (
             <li key={todo.id}>
                 {todo.title}
-                {todo.id}
                 <button onClick={() => toggleTodo(todo.id, todo.completed)}>{label}</button>
                 <button onClick={() => deleteTodo(todo.id)}>削除</button>
             </li>

@@ -19,5 +19,11 @@ const _delete = async id => {
     return id;
 }
 
+// TODOを追加する
+const add = async newTodo => {
+    const response = await axios.post(baseUrl, newTodo);
+    return response.data
+}
 
-export default {getAll, update, delete: _delete}
+
+export default {getAll, update, delete: _delete, add }
