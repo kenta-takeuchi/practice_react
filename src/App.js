@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 function add(a, b) {
     return a + b;
@@ -23,6 +23,10 @@ function App() {
 
     const [count, setCount] = useState(0);
 
+    useEffect(() => {
+        document.getElementById('effectHook').innerText = `You clicked ${count} times`;
+    })
+
     return (
         <div className="App">
             {isReact && <Hello name="React"/>}
@@ -35,6 +39,7 @@ function App() {
 
             <p>Count: {count}</p>
             <button onClick={() => setCount(count + 1)}>add Count</button>
+            <p id="effectHook"></p>
         </div>
     );
 }
