@@ -10,15 +10,15 @@ phases:
       - node -v
       - npm -v
       - yarn -v
-pre_build:
-  commands:
-    - echo Installing dependencies...
-    - cd todo_app
-    - yarn install
-build:
-  commands:
-    - echo Building...
-    - yarn build
+  pre_build:
+    commands:
+      - echo Installing dependencies...
+      - cd todo_app
+      - yarn install
+  build:
+    commands:
+      - echo Building...
+      - yarn build
 artifacts:
   files:
     - "**/*"
