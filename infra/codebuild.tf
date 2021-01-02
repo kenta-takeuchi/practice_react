@@ -1,5 +1,7 @@
 resource "aws_codebuild_project" "react-aws-codebuild" {
   name = "react-aws-codebuild"
+  description = "react-aws-codebuild"
+  build_timeout = "60"
   service_role = module.codebuild_role.iam_role_arn
 
   artifacts {
@@ -23,8 +25,6 @@ data "aws_iam_policy_document" "codebuild" {
   statement {
     effect = "Allow"
     resources = ["*"]
-    build_timeout = "60"
-
 
     actions = [
       "s3:PutObject",
