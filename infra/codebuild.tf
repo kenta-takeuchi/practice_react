@@ -1,7 +1,5 @@
 resource "aws_codebuild_project" "react-aws-codebuild" {
   name = "react-aws-codebuild"
-  description = "react-aws-codebuild"
-  build_timeout = "5"
   service_role = module.codebuild_role.iam_role_arn
 
   artifacts {
@@ -10,7 +8,7 @@ resource "aws_codebuild_project" "react-aws-codebuild" {
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/standard:4.0"
+    image = "aws/codebuild/standard:2.0"
     type = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
   }
@@ -24,9 +22,9 @@ resource "aws_codebuild_project" "react-aws-codebuild" {
 data "aws_iam_policy_document" "codebuild" {
   statement {
     effect = "Allow"
-    resources = [
-      "arn:aws:s3:::${var.bucket_name}/*"]
-    sid = "PublicReadGetObject"
+    resources = ["*"]
+    build_timeout = "60"
+
 
     actions = [
       "s3:PutObject",
