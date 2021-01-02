@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing npm...
+      - npm install -g n
+      - n stable
+      - npm update -g npm
+      - npm install
+      - node -v
+      - npm -v
+      - yarn -v
+pre_build:
+  commands:
+    - echo Installing dependencies...
+    - cd todo_app
+    - yarn install
+build:
+  commands:
+    - echo Building...
+    - yarn build
+artifacts:
+  files:
+    - "**/*"
+  base-directory: todo_app/build
